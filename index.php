@@ -29,5 +29,7 @@ spl_autoload_register(function($class) {
     require_once $class . ".php";
 });
 
-$app = Front::getInstance();
-$app->route($smarty);
+d($_POST, 0);
+d($_SESSION,0);
+
+$app = Front::getInstance()->route($smarty);

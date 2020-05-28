@@ -28,10 +28,6 @@
     <script src="/js/jquery.js" defer=""></script>
     <script src="/js/custom.js" defer=""></script>
     <script>
-    /*
-        $.ajax(function($){
-           $("#phone").mask("38 (999) 999-9999");
-        });
-    */    
+
     </script>
   </head>

@@ -1,6 +1,6 @@
             
             <div class="col-xs-12">
-                <form action="/category/addcat/" method="POST" class="uform">
+                <form action="/task/add/" method="POST" class="uform">
                  <h2>Добавление новой задачи</h2>
                     <div class="form-group">
                         <label for="username">Имя пользователя</label>
@@ -15,6 +15,6 @@
                         <textarea class="form-control input-lg" id="content" name="content">Введите задачу</textarea>
                     </div>
 
-                    <button type="submit" class="btn btn-primary btn-lg btn-block" name="addsubm">Добавить</button>
+                    <input type="submit" class="btn btn-primary btn-lg btn-block" value="Add"></input>
                 </form><!--/end form-->
             </div><!--/.col-xs-12-->

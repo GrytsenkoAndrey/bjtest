@@ -10,7 +10,7 @@ class Front
 {
     protected $controller;
     protected $action;
-    protected $params;
+    protected $params = [];
     protected $activePage;
     static private $instance;
 
@@ -34,11 +34,6 @@ class Front
             $this->controller = '';
         }
 
-        /* !!!!!!!!!!!!!!!!!!!!
-        // сохраняем значение для выбора класса active в меню (навигации)
-        $this->activePage = !empty($arrURI[0]) ? strtolower($fileName) : 'index';
-        !!!!!!!!!!!!!!!!!!!!!! */
-
         // выбор действия
         $this->action = !empty($arrURI[1]) ? strip_tags(trim($arrURI[1])) . 'Action' : 'mainAction';
         // параметры
@@ -60,36 +55,13 @@ class Front
 
     public function route($smarty)
     {
-        if(class_exists($this->getController())) {
-            // если класс контроллера уже существует, получаем данные о классе
-            $rc = new ReflectionClass($this->getController());
-            // есть ли у контроллера метод (у класса)
-            if($rc->hasMethod($this->getAction())) {
-                $controller = $rc->newInstance(self::$instance, $smarty);
-                $method = $rc->getMethod($this->getAction());
-                // вызываем этот метод
-                $method->invoke($controller);
-            } else {
-                header("Location: " . SITE_INDEX . 'error/main');
-            }
-        } else {
-            header("Location: " . SITE_INDEX . 'error/');
-        }
-    }
-
-    public function getParams()
-    {
-        return $this->params;
+        $function = $this->getAction();
+        (new $this->controller($smarty))->$function($this->params);
     }
 
     public function getController()
     {
         return $this->controller;
-    }
-
-    public function getAPage()
-    {
-        return $this->activePage;
     }
 
     public function getAction()

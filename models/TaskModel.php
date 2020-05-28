@@ -8,10 +8,27 @@
  */
 class TaskModel
 {
-
-    public function addTask()
+    /**
+     * @param array $data
+     * @return bool
+     */
+    public function addTask(array $data): bool
     {
+        $conn = DB::getInstance()->getConnection();
 
+        $sql = "INSERT INTO task (username, useremail, content) VALUES (:user, :email, :content)";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([
+            ':user' => $data['username'],
+            ':email' => $data['useremail'],
+            ':content' => $data['content'],
+        ]);
+
+        if ($conn->lastInsertId() > 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**

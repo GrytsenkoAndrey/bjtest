@@ -12,9 +12,9 @@ class TaskController
     private $smarty;
     private $model;
 
-    public function __construct(Front $front, Smarty $smarty)
+    public function __construct(Smarty $smarty)
     {
-        $this->app = $front;
+        $this->app = Front::getInstance();
         $this->smarty = $smarty;
         $this->model = new TaskModel();
     }
@@ -35,12 +35,12 @@ class TaskController
         loadTemplate($this->smarty, 'navbar');
         loadTemplate($this->smarty, 'index');
         loadTemplate($this->smarty, 'footer');
-        $_SESSION['infoMsg'] = '';
     }
 
     public function addAction()
     {
-        if ($_POST) {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            echo __FILE__ . __LINE__ ;
             $post = [];
             foreach ($_POST as $k => $v) {
                 if ($k == 'useremail') {
@@ -62,6 +62,7 @@ class TaskController
                 }
             }
 
+            d($_SESSION['infoMsg']);
             if (empty(trim($_SESSION['infoMsg']))) {
                 if ($this->model->addTask($post)) {
                     $_SESSION['infoMsg'] = '<p class="alert alert-success">Задача добавлена</p>';
@@ -73,6 +74,7 @@ class TaskController
                     exit();
                 }
             } else {
+                d($_SESSION['infoMsg']);
                 header("Location: /task/add/");
                 exit();
             }
@@ -89,7 +91,6 @@ class TaskController
             loadTemplate($this->smarty, 'navbar');
             loadTemplate($this->smarty, 'add');
             loadTemplate($this->smarty, 'footer');
-            $_SESSION['infoMsg'] = '';
         }
     }
 }

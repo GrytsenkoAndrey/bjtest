@@ -13,7 +13,7 @@ function main($smarty, $params)
     $infoMsg = isset($_SESSION['infoMsg']) ? $_SESSION['infoMsg'] : '';
 
     $rsTask = TaskModel::getAllTasks();
-d($rsTask);
+
     $smarty->assign('pageTitle', 'Главная');
     $smarty->assign('templateWebPath', TEMPLATE_WEB_PATH);
     $smarty->assign('activeUser', $activeUser);

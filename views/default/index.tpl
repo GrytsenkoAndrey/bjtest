@@ -38,7 +38,7 @@
         </div>
 
         <div class="row">
-            <div class="col-xs-12 col-sm-6 col-lg-4">
+            <div class="col-xs-12 col-sm-12 col-lg-12">
 
                 <hr>
                 {if count($rsTask) > 0}
@@ -47,7 +47,7 @@
                             <p class='lead'>{if $item['status'] == 1}Выполнено{else}Не выполнено{/if}
                          </h2>
                          <p>{$item['content']}</p>
-                        {if $user['id'] > 0}
+                        {if isset($user['id'])}
                             <p><a href="/task/edit/" title="Edit" class="btn btn-primary">Edit</a>
                             {if $item['edited'] == 1}
                                 <small>| Отредактировано администратором</small>

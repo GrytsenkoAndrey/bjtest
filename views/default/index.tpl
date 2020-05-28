@@ -12,7 +12,7 @@
                 </div>
                 <div class="form-group">
                 <label for="email">Email</label>
-                <select name="email" class="form-control input-lg" id="status">
+                <select name="email" class="form-control input-lg" id="email">
                     <option >Сортировать по</option>
                     <option value="ASC">Возрастанию</option>
                     <option value="DESC">Убыванию</option>

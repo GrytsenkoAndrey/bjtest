@@ -92,7 +92,7 @@ class TaskModel
         $order = '';
         if (count($_GET) > 0) {
             $get['username'] = isset($_GET['user']) ? trim(strip_tags($_GET['user'])) : '';
-            $get['email'] = isset($_GET['email']) ? trim(strip_tags($_GET['email'])) : '';
+            $get['useremail'] = isset($_GET['email']) ? trim(strip_tags($_GET['email'])) : '';
             $get['status'] = isset($_GET['status']) ? trim(strip_tags($_GET['status'])) : '';
 
             $sortString = '';
@@ -111,6 +111,47 @@ class TaskModel
 
         $sql = "SELECT id, username, useremail, content, status, edited FROM task {$order}";
         $stmt = $conn->query($sql);
+
+        if ($row = $stmt->fetchAll()) {
+            return $row;
+        } else {
+            return [];
+        }
+    }
+
+    /**
+     * @return mixed
+     */
+    public static function getAllTasksPage($params, int $limit = 3): array
+    {
+        $conn = DB::getInstance()->getConnection();
+
+        $order = '';
+        if (count($_GET) > 0) {
+            $get['username'] = isset($_GET['user']) ? trim(strip_tags($_GET['user'])) : '';
+            $get['useremail'] = isset($_GET['email']) ? trim(strip_tags($_GET['email'])) : '';
+            $get['status'] = isset($_GET['status']) ? trim(strip_tags($_GET['status'])) : '';
+
+            $sortString = '';
+            foreach ($get as $k => $v) {
+                $var = !empty($v) ? trim(strip_tags($v)) : '';
+                if ($var == 'ASC' || $var == 'DESC') {
+                    $sortString .= "$k $var, ";
+                }
+            }
+
+            if (!empty(trim($sortString))) {
+                $sortString = substr($sortString, 0, strlen($sortString) -2);
+                $order = "ORDER BY " . $sortString;
+            }
+        }
+        # limit
+        $lim = (isset($params['page'])) ? ((int)$params['page'] - 1) * $limit : 0;
+
+        $sql = "SELECT id, username, useremail, content, status, edited FROM task {$order} LIMIT ?, {$limit}";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindValue(1, $lim, \PDO::PARAM_INT);
+        $stmt->execute();
 
         if ($row = $stmt->fetchAll()) {
             return $row;

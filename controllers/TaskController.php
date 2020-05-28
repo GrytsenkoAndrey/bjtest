@@ -12,17 +12,30 @@ function main($smarty, $params)
     $activeUser = isset($_SESSION['user_id']) ? $_SESSION['user_name'] : '';
     $infoMsg = isset($_SESSION['infoMsg']) ? $_SESSION['infoMsg'] : '';
 
-    $rsTask = TaskModel::getAllTasks();
+    $rsTask = TaskModel::getAllTasksPage($params);
+    $rsPagination = pagination(TaskModel::getAllTasks());
 
+    if (count($_GET) > 0 ) {
+        $user = isset($_GET['user']) ? trim(strip_tags($_GET['user'])) : '';
+        $email = isset($_GET['email']) ? trim(strip_tags($_GET['email'])) : '';
+        $status = isset($_GET['status']) ? trim(strip_tags($_GET['status'])) : '';
+    }
     $smarty->assign('pageTitle', 'Главная');
     $smarty->assign('templateWebPath', TEMPLATE_WEB_PATH);
     $smarty->assign('activeUser', $activeUser);
     $smarty->assign('infoMsg', $infoMsg);
     $smarty->assign('rsTask', $rsTask);
+    $smarty->assign('rsPag', $rsPagination);
+    $smarty->assign('user', $user);
+    $smarty->assign('email', $email);
+    $smarty->assign('status', $status);
+
     loadTemplate($smarty, 'header');
     loadTemplate($smarty, 'navbar');
     loadTemplate($smarty, 'index');
     loadTemplate($smarty, 'footer');
+
+    $_SESSION['infoMsg'] = '';
 }
 
 function add($smarty, $params)

@@ -92,15 +92,7 @@ function pagination(array $data, int $cnt = 3) : array
     $urlPrefix = "/". $arrUri['controller'] ."/". $arrUri['action'] ."/";
     # формируем конец строки - $_GET
     $urlPostfix = '';
-    if (count($arrUri['GET']) > 0) {
-        foreach($arrUri['GET'] as $k=>$v) {
-            $urlPostfix .= $k.'='.$v.'&';
-        }
-    }
-    $urlPostfix = substr($urlPostfix,0,strlen($urlPostfix)-1); // удаляем последний &
-    if (strlen($urlPostfix) > 1) {
-        $urlPostfix = '?'.$urlPostfix; // добавляем в начало строки знак ?
-    }
+    $urlPostfix = http_build_query($arrUri['GET']);
     # проверяем массивы;
     if (count($data) > 0) {
         # общее количество страниц

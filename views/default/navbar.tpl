@@ -12,7 +12,7 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-              <li><a href="/task/main/" title="Main page">Главная</a></li>
+              <li><a href="/task/main/page/1/" title="Main page">Главная</a></li>
               <li><a href="/task/add/" title="Касса">Новая задача</a></li>
               <li><a href="/user/main/" title="Login">Войти</a></li>
               <li><a href="/user/logout/" title="Logout">Выйти</a></li>

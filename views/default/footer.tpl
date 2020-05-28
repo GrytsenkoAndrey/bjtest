@@ -6,7 +6,7 @@
       <hr>
 
       <footer>
-        <p>&copy; 2020 &quot; Tasks &quot;</p>
+        <p class="text-center">&copy; 2020 &quot; Tasks &quot;</p>
       </footer>
 
     </div><!--/.container-->

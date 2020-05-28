@@ -102,7 +102,11 @@ function add($smarty, $params)
 function edit($smarty, $params)
 {
     if ($_POST) {
-
+        if (!isset($_SESSION['user_id'])) {
+            $_SESSION['infoMsg'] = '<p class="alert alert-danger">Для внесения изменений необходимо авторизоваться!</p>';
+            header("Location: /task/main/");
+            exit();
+        }
         $post = [];
         foreach ($_POST as $k => $v) {
             if (!empty(trim(strip_tags($v)))) {

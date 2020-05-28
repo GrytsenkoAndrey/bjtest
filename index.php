@@ -28,8 +28,8 @@ set_include_path(get_include_path()
 spl_autoload_register(function($class) {
     require_once $class . ".php";
 });
-
+/*
 d($_POST, 0);
-d($_SESSION,0);
+d($_SESSION,0);*/
 
-$app = Front::getInstance()->route($smarty);
+loadPage($smarty);

@@ -12,7 +12,7 @@ class TaskModel
      * @param array $data
      * @return bool
      */
-    public function addTask(array $data): bool
+    public static function addTask(array $data): bool
     {
         $conn = DB::getInstance()->getConnection();
 
@@ -34,7 +34,7 @@ class TaskModel
     /**
      * @return mixed
      */
-    public function getAllTasks(): array
+    public static function getAllTasks(): array
     {
         $conn = DB::getInstance()->getConnection();
 

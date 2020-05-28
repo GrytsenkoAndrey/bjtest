@@ -6,31 +6,18 @@
  * Date: 28.05.2020
  * Time: 11:16
  */
-class ErrorController
+function mainAction($smarty, $params)
 {
-    private $app;
-    private $smarty;
+    $activeUser = isset($_SESSION['user_id']) ? $_SESSION['user_name'] : '';
+    $infoMsg = isset($_SESSION['infoMsg']) ? $_SESSION['infoMsg'] : '';
 
-    public function __construct(Front $front, Smarty $smarty)
-    {
-        $this->app = $front;
-        $this->smarty = $smarty;
-    }
-
-    public function mainAction()
-    {
-        $activeUser = isset($_SESSION['user_id']) ? $_SESSION['user_name'] : '';
-        $infoMsg = isset($_SESSION['infoMsg']) ? $_SESSION['infoMsg'] : '';
-
-        $this->smarty->assign('pageTitle', 'Страница не найдена');
-        $this->smarty->assign('templateWebPath', TEMPLATE_WEB_PATH);
-        $this->smarty->assign('activeUser', $activeUser);
-        $this->smarty->assign('infoMsg', $infoMsg);
-        loadTemplate($this->smarty, 'header');
-        loadTemplate($this->smarty, 'navbar');
-        loadTemplate($this->smarty, 'error');
-        loadTemplate($this->smarty, 'footer');
-        $_SESSION['infoMsg'] = '';
-
-    }
+    $smarty->assign('pageTitle', 'Страница не найдена');
+    $smarty->assign('templateWebPath', TEMPLATE_WEB_PATH);
+    $smarty->assign('activeUser', $activeUser);
+    $smarty->assign('infoMsg', $infoMsg);
+    loadTemplate($smarty, 'header');
+    loadTemplate($smarty, 'navbar');
+    loadTemplate($smarty, 'error');
+    loadTemplate($smarty, 'footer');
+    $_SESSION['infoMsg'] = '';
 }

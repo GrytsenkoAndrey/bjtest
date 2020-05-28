@@ -8,11 +8,11 @@
                     </div>
                     <div class="form-group">
                         <label for="useremail">E-mail пользователя</label>
-                        <input class="form-control input-lg" id="useremail" name="useremail" placeholder="E-mail пользователя" type="email">
+                        <input class="form-control input-lg" id="useremail" name="useremail" placeholder="E-mail пользователя" type="text">
                     </div>
                     <div class="form-group">
                         <label for="content">Задача</label>
-                        <textarea class="form-control input-lg" id="content" name="content">Введите задачу</textarea>
+                        <textarea class="form-control input-lg" id="content" name="content"></textarea>
                     </div>
 
                     <input type="submit" class="btn btn-primary btn-lg btn-block" value="Add"></input>

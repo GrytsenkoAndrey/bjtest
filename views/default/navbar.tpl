@@ -35,7 +35,7 @@
                   
               </div>
           </div>
-
+      </div>
           <div class="row">
           {$infoMsg}
           </div>

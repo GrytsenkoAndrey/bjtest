@@ -14,7 +14,7 @@
           <ul class="nav navbar-nav">
               <li><a href="/task/main/" title="Main page">Главная</a></li>
               <li><a href="/task/add/" title="Касса">Новая задача</a></li>
-              <li><a href="/user/login/" title="Login">Войти</a></li>
+              <li><a href="/user/main/" title="Login">Войти</a></li>
               <li><a href="/user/logout/" title="Logout">Выйти</a></li>
           </ul>
         </div><!-- /.nav-collapse -->

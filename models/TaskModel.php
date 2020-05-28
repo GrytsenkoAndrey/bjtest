@@ -12,6 +12,28 @@ class TaskModel
      * @param array $data
      * @return bool
      */
+    public static function editTask(array $data): bool
+    {
+        $conn = DB::getInstance()->getConnection();
+
+        $sql = "UPDATE task SET content = :cont, status = :status, edited = 1 WHERE id = :id";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([
+            ':cont' => $data['content'],
+            ':status' => $data['status'],
+        ]);
+
+        if ($conn->lastInsertId() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * @param array $data
+     * @return bool
+     */
     public static function addTask(array $data): bool
     {
         $conn = DB::getInstance()->getConnection();

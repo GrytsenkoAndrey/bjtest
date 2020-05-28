@@ -6,24 +6,24 @@
                 <label for="user">Имя</label>
                 <select name="user" class="form-control input-lg" id="user">
                     <option></option>
-                    <option value="ASC" {if $user = 'ASC'}selected{/if}>Возрастанию</option>
-                    <option value="DESC {if $user = 'DESC'}selected{/if}">Убыванию</option>
+                    <option value="ASC" {if $user == 'ASC'}selected{/if}>Возрастанию</option>
+                    <option value="DESC" {if $user == 'DESC'}selected{/if}>Убыванию</option>
                 </select>
                 </div>
                 <div class="form-group">
                 <label for="email">Email</label>
                 <select name="email" class="form-control input-lg" id="email">
                     <option ></option>
-                    <option value="ASC" {if $email = 'ASC'}selected{/if}>Возрастанию</option>
-                    <option value="DESC {if $email = 'DESC'}selected{/if}">Убыванию</option>
+                    <option value="ASC" {if $email == 'ASC'}selected{/if}>Возрастанию</option>
+                    <option value="DESC" {if $email == 'DESC'}selected{/if}>Убыванию</option>
                 </select>
                 </div>
                     <div class="form-group">
                         <label for="status">Статус</label>
                         <select name="status" class="form-control input-lg" id="status">
                             <option ></option>
-                            <option value="ASC" {if $status = 'ASC'}selected{/if}>Возрастанию</option>
-                            <option value="DESC {if $status = 'DESC'}selected{/if}">Убыванию</option>
+                            <option value="ASC" {if $status == 'ASC'}selected{/if}>Возрастанию</option>
+                            <option value="DESC" {if $status == 'DESC'}selected{/if}>Убыванию</option>
                         </select>
                 <button type="submit" class="btn btn-primary btn-lg">Применить</button>
                 </div>

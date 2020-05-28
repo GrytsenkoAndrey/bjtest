@@ -19,7 +19,12 @@ function main($smarty, $params)
         $user = isset($_GET['user']) ? trim(strip_tags($_GET['user'])) : '';
         $email = isset($_GET['email']) ? trim(strip_tags($_GET['email'])) : '';
         $status = isset($_GET['status']) ? trim(strip_tags($_GET['status'])) : '';
+    } else {
+        $user = '';
+        $email = '';
+        $status = '';
     }
+
     $smarty->assign('pageTitle', 'Главная');
     $smarty->assign('templateWebPath', TEMPLATE_WEB_PATH);
     $smarty->assign('activeUser', $activeUser);

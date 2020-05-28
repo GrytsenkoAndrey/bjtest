@@ -93,6 +93,9 @@ function pagination(array $data, int $cnt = 3) : array
     # формируем конец строки - $_GET
     $urlPostfix = '';
     $urlPostfix = http_build_query($arrUri['GET']);
+    if (!empty($urlPostfix)) {
+        $urlPostfix = '?' . $urlPostfix;
+    }
     # проверяем массивы;
     if (count($data) > 0) {
         # общее количество страниц

@@ -148,7 +148,7 @@ class TaskModel
         # limit
         $lim = (isset($params['page'])) ? ((int)$params['page'] - 1) * $limit : 0;
 
-        $sql = "SELECT id, username, useremail, content, status, edited FROM task {$order} LIMIT ?, {$limit}";
+        $sql = "SELECT id, username, useremail, content, status, edited FROM task {$order}  LIMIT ?, {$limit}";
         $stmt = $conn->prepare($sql);
         $stmt->bindValue(1, $lim, \PDO::PARAM_INT);
         $stmt->execute();

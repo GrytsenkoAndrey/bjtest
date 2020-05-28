@@ -8,6 +8,15 @@
  */
 class TaskModel
 {
+
+    public function addTask()
+    {
+
+    }
+
+    /**
+     * @return mixed
+     */
     public function getAllTasks(): array
     {
         $conn = DB::getInstance()->getConnection();

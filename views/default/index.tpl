@@ -32,8 +32,14 @@
         </div> <!--/ end row FORM -->
 
         <div class="row">
+            <div col="col-xs-12" style="padding:10px;">
+            <p><a href="/task/add/" class="btn btn-success">Новая задача</a></p>
+                </div>
+        </div>
+
+        <div class="row">
             <div class="col-xs-12 col-sm-6 col-lg-4">
-                <p><a href="/task/add/" class="btn btn-success">Новая задача</a></p>
+
                 <hr>
                 {if count($rsTask) > 0}
                     {foreach $rsTask as $item}

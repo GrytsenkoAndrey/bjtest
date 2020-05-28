@@ -33,6 +33,14 @@ class TaskController
         loadTemplate($this->smarty, 'index');
         loadTemplate($this->smarty, 'footer');
         $_SESSION['infoMsg'] = '';
+    }
 
+    public function addAction()
+    {
+        if ($_POST) {
+            #
+        } else {
+
+        }
     }
 }

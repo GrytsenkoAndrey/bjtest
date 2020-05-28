@@ -1,33 +1,32 @@
         
         <div class="row">
-        <div class="col-xs-10 col-xs-offset-1">
-        <form class="form-inline" action="#" method="POST">
-        <div class="form-group">
-        <label for="year">Выберите год </label>
-        <select name="y" class="form-control input-lg" id="year">
-            <option value="2020">2020</option>
-            <option value="2021">2021</option>
-            <option value="2022">2022</option>
-        </select>
-        </div>
-        <div class="form-group">
-        <label for="year">Выберите месяц </label>
-        <select name="m" class="form-control input-lg" id="month">
-            <option value="01">Январь</option>
-            <option value="02">Февраль</option>
-            <option value="03">Март</option>
-            <option value="04">Апрель</option>
-            <option value="05">Май</option>
-            <option value="06">Июнь</option>
-            <option value="07">Июль</option>
-            <option value="08">Август</option>
-            <option value="09">Сентябрь</option>
-            <option value="10">Октябрь</option>
-            <option value="11">Ноябрь</option>
-            <option value="12">Декабрь</option>
-        </select>
-        <button type="submit" class="btn btn-primary btn-lg" name="subsel">Применить</button>
-        </div>
+        <div class="col-xs-12">
+        <form class="form-inline">
+            <div class="form-group">
+            <label for="user">Имя</label>
+            <select name="user" class="form-control input-lg" id="user">
+                <option selected>Сортировать по</option>
+                <option value="ASC">Возрастанию</option>
+                <option value="DESC">Убыванию</option>
+            </select>
+            </div>
+            <div class="form-group">
+            <label for="email">Email</label>
+            <select name="email" class="form-control input-lg" id="status">
+                <option selected>Сортировать по</option>
+                <option value="ASC">Возрастанию</option>
+                <option value="DESC">Убыванию</option>
+            </select>
+            </div>
+                <div class="form-group">
+                    <label for="status">Статус</label>
+                    <select name="status" class="form-control input-lg" id="status">
+                        <option selected>Сортировать по</option>
+                        <option value="ASC">Возрастанию</option>
+                        <option value="DESC">Убыванию</option>
+                    </select>
+            <button type="submit" class="btn btn-primary btn-lg" name="subsel">Применить</button>
+            </div>
         </form>
         </div> <!--/ .col-xs-10 col-xs-offset-1 -->
         </div> <!--/ end row FORM -->

@@ -11,6 +11,7 @@ ini_set('display_errors', true);
 session_start();
 
 require_once 'config/config.php';
+require_once 'library/mainFunctions.php';
 
 /**
 * устанавливаем папки для автоподключения
@@ -29,4 +30,4 @@ spl_autoload_register(function($class) {
 });
 
 $app = Front::getInstance();
-$app->route();
+$app->route($smarty);

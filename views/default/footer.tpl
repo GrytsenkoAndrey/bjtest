@@ -1,17 +1,13 @@
                          </div><!--/row-->
             </div><!--/.col-xs-12.col-sm-9-->
 
-        <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
-          <div class="list-group">
-            <a href="/orders/index/y/2020/" class="list-group-item active">2020</a>
-          </div>
-        </div><!--/.sidebar-offcanvas-->
+
       </div><!--/row-->
 
       <hr>
 
       <footer>
-        <p>&copy; 2020 &quot;Иголочка&quot;</p>
+        <p>&copy; 2020 &quot; Tasks &quot;</p>
       </footer>
 
     </div><!--/.container-->

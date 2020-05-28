@@ -8,21 +8,14 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/">Иголочка</a>
+          <a class="navbar-brand" href="/">Tasks</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <!--<li><a href="/">Главная</a></li>
-             <li><a href="/user/" title="Войти">Войти</a></li> -->
-            <li><a href="/till/index/" title="Касса">Касса</a></li>
-            <li><a href="/salary/edit/" title="Зарплата">Зарплата</a></li>
-            <li><a href="/orders/" title="Заказы">Заказы</a></li>
-            <li><a href="/clients/index/p/1/" title="Клиенты">Клиенты</a></li>
-            <li><a href="/user/show/" title="Пользователи">Пользователи</a></li>
-            <li><a href="/category/" title="Услуги">Услуги</a></li>
-            <!-- <li><a href="/settings/" title="Настройки">Настройки</a></li> -->
-            <li><a href="/setting/" title="Настройки">Настройки</a></li>
-            <li><a href="/user/logout/">Выйти</a></li>
+              <li><a href="/" title="Main page">Главная</a></li>
+              <li><a href="/task/add/" title="Касса">Новая задача</a></li>
+              <li><a href="/user/login/" title="Login">Войти</a></li>
+              <li><a href="/user/logout/" title="Logout">Выйти</a></li>
           </ul>
         </div><!-- /.nav-collapse -->
       </div><!-- /.container -->
@@ -36,10 +29,8 @@
               <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">МЕНЮ</button>
               </p>
               <div class="jumbotron">
-                  <img src="/img/logo.jpeg" alt="Иголочка" class="pull-right img-circle">
-                  <h1>Иголочка</h1>
-                  <p>Текущая неделя <b>{$week}</b></p>
-                  <!-- <p>Швейная мастерская</p> -->
+                  <img src="{$templateWebPath}img/logo.png" alt="Иголочка" class="pull-right img-circle">
+                  <h1>Tasks</h1>
                   {include file='activeUser.tpl'}
                   
               </div>

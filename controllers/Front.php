@@ -24,14 +24,14 @@ class Front
 
     private function __construct()
     {
-        $arrURI = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
+        $arrURI = explode('/', trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/'));
         // проверяем существует ли файл контроллера
-        $fileName = ucfirst(strip_tags(trim($arrURI[0])));
+        $fileName = isset($arrURI[0]) ? ucfirst(strip_tags(trim($arrURI[0]))) : '';
         if(file_exists($_SERVER['DOCUMENT_ROOT'] . '/controllers/' . $fileName . 'Controller.php')) {
             // выбор контроллера из адресной строки
-            $this->_controller = !empty($splits[0]) ? $fileName . 'Controller' : 'IndexController';
+            $this->controller = !empty($arrURI[0]) ? $fileName . 'Controller' : 'IndexController';
         } else {
-            $this->_controller = 'ErrorController';
+            $this->controller = '';
         }
 
         /* !!!!!!!!!!!!!!!!!!!!
@@ -42,9 +42,12 @@ class Front
         // выбор действия
         $this->action = !empty($arrURI[1]) ? strip_tags(trim($arrURI[1])) . 'Action' : 'mainAction';
         // параметры
-        if(!empty(strip_tags(trim($arrURI[2]))) && !empty(strip_tags(trim($arrURI[3])))) {
+        $second = isset($arrURI[2]) ? strip_tags(trim($arrURI[2])) : '';
+        $third = isset($arrURI[3]) ? strip_tags(trim($arrURI[3])) : '';
+        $numParams = !empty($arrURI) ? count($arrURI) : 0;
+        if(!empty($second) && !empty($third)) {
             $keys = $values = [];
-            for($i = 2, $cnt = count($arrURI); $i < $cnt; $i++) {
+            for($i = 2, $cnt = $numParams; $i < $cnt; $i++) {
                 if($i%2 == 0) {
                     $keys[] = $arrURI[$i];
                 } else {
@@ -55,14 +58,14 @@ class Front
         }
     }
 
-    public function route()
+    public function route($smarty)
     {
         if(class_exists($this->getController())) {
             // если класс контроллера уже существует, получаем данные о классе
             $rc = new ReflectionClass($this->getController());
             // есть ли у контроллера метод (у класса)
             if($rc->hasMethod($this->getAction())) {
-                $controller = $rc->newInstance();
+                $controller = $rc->newInstance(self::$instance, $smarty);
                 $method = $rc->getMethod($this->getAction());
                 // вызываем этот метод
                 $method->invoke($controller);

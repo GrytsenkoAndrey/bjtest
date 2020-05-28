@@ -3,19 +3,18 @@
 * файл настроек
 */
 
-define('PATH_PREFIX', 'controllers/');
-define('PATH_POSTFIX', 'Controller.php');
 define('DB_USER', 'myuser');
 define('DB_PASS', 'myuserpass');
-define('HOST', 'localhost');
+define('DB_HOST', 'localhost');
 define('DB_NAME', 'bjtest_db');
 define('APP_DIR', $_SERVER['DOCUMENT_ROOT']);
-define('VIEW_DIR', APP_DIR . DIRECTORY_SEPARATOR . 'view/');
+define('VIEW_DIR', APP_DIR . DIRECTORY_SEPARATOR . 'views');
+define('SITE_INDEX', 'http://bjtest/');
 // Smarty
 // шаблон по умолчанию
 $template = 'default';
 // пути к файлам шаблонов
-define('TEMPLATE_PREFIX', "views/{$template}/");
+define('TEMPLATE_PREFIX', VIEW_DIR . "/{$template}/");
 define('TEMPLATE_POSTFIX', '.tpl');
 // пути к файлам шаблонов в wwww
 define('TEMPLATE_WEB_PATH', "/templates/{$template}/");

@@ -8,6 +8,38 @@
  */
 class TaskModel
 {
+    public static function getTaskById(int $id): array
+    {
+        $conn = DB::getInstance()->getConnection();
+
+        $sql = "SELECT id, content, status FROM task WHERE id = :id";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([':id' => $id]);
+
+        if ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+            return $row;
+        } else {
+            return [];
+        }
+    }
+    /**
+     * @param int $id
+     * @return int
+     */
+    public static function checkId(int $id): int
+    {
+        $conn = DB::getInstance()->getConnection();
+        $sql = "SELECT COUNT(*) AS quantity FROM task WHERE id = :id";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([':id' => $id]);
+
+        if ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+            return $row['quantity'];
+        } else {
+            return -1;
+        }
+    }
+
     /**
      * @param array $data
      * @return bool
@@ -21,13 +53,10 @@ class TaskModel
         $stmt->execute([
             ':cont' => $data['content'],
             ':status' => $data['status'],
+            ':id' => $data['id'],
         ]);
 
-        if ($conn->lastInsertId() > 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return true;
     }
 
     /**
@@ -80,7 +109,7 @@ class TaskModel
             }
         }
 
-        $sql = "SELECT username, useremail, content, status, edited FROM task {$order}";
+        $sql = "SELECT id, username, useremail, content, status, edited FROM task {$order}";
         $stmt = $conn->query($sql);
 
         if ($row = $stmt->fetchAll()) {

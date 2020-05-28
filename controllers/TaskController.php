@@ -81,3 +81,61 @@ function add($smarty, $params)
     }
 }
 
+function edit($smarty, $params)
+{
+    if ($_POST) {
+
+        $post = [];
+        foreach ($_POST as $k => $v) {
+            if (!empty(trim(strip_tags($v)))) {
+                $post[$k] = trim(strip_tags($v));
+            } else {
+                $_SESSION['infoMsg'] .= "<p class='alert alert-danger'>$k является пустой</p><br>";
+            }
+        }
+
+        if (empty(trim($_SESSION['infoMsg']))) {
+            if (TaskModel::editTask($post)) {
+                $_SESSION['infoMsg'] = '<p class="alert alert-success">Задача изменена</p>';
+                header("Location: /task/main/");
+                exit();
+            } else {
+                $_SESSION['infoMsg'] = '<p class="alert alert-danger">Задача НЕ изменена</p>';
+                header("Location: /task/main/");
+                exit();
+            }
+        } else {
+            header("Location: /task/edit/");
+            exit();
+        }
+
+    } else {
+        $activeUser = isset($_SESSION['user_id']) ? $_SESSION['user_name'] : '';
+        $infoMsg = isset($_SESSION['infoMsg']) ? $_SESSION['infoMsg'] : '';
+
+        if (isset($params['id'])) {
+            $id = (int)trim(strip_tags($params['id']));
+
+            if (TaskModel::checkId($id) != -1) {
+
+                $rsTask = TaskModel::getTaskById($id);
+
+                $smarty->assign('pageTitle', 'Новая задача');
+                $smarty->assign('templateWebPath', TEMPLATE_WEB_PATH);
+                $smarty->assign('activeUser', $activeUser);
+                $smarty->assign('infoMsg', $infoMsg);
+                $smarty->assign('rsTask', $rsTask);
+                loadTemplate($smarty, 'header');
+                loadTemplate($smarty, 'navbar');
+                loadTemplate($smarty, 'edit');
+                loadTemplate($smarty, 'footer');
+
+                $_SESSION['infoMsg'] = '';
+            } else {
+                $_SESSION['infoMsg'] = '<p class="alert alert-danger">Задачи с таким ID не существует</p>';
+            }
+        } else {
+            $_SESSION['infoMsg'] = '<p class="alert alert-danger">Неверный параметр</p>';
+        }
+    }
+}

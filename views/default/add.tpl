@@ -15,6 +15,6 @@
                         <textarea class="form-control input-lg" id="content" name="content"></textarea>
                     </div>
 
-                    <input type="submit" class="btn btn-primary btn-lg btn-block" value="Add"></input>
+                    <input type="submit" class="btn btn-primary btn-lg btn-block" value="Add">
                 </form><!--/end form-->
             </div><!--/.col-xs-12-->

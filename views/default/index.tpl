@@ -47,8 +47,8 @@
                             <p class='lead'>{if $item['status'] == 1}Выполнено{else}Не выполнено{/if}
                          </h2>
                          <p>{$item['content']}</p>
-                        {if isset($user['id'])}
-                            <p><a href="/task/edit/" title="Edit" class="btn btn-primary">Edit</a>
+                        {if isset($activeUser)}
+                            <p><a href="/task/edit/id/{$item['id']}" title="Edit" class="btn btn-primary">Edit</a>
                             {if $item['edited'] == 1}
                                 <small>| Отредактировано администратором</small>
                             {/if}

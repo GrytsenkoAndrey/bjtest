@@ -1,0 +1,1 @@
+<p>Активный пользователь: <a href="#" title="{$activeUser}">{$activeUser}</a></p>

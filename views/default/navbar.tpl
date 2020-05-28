@@ -8,11 +8,11 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/">Tasks</a>
+          <a class="navbar-brand" href="/task/main/">Tasks</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-              <li><a href="/" title="Main page">Главная</a></li>
+              <li><a href="/task/main/" title="Main page">Главная</a></li>
               <li><a href="/task/add/" title="Касса">Новая задача</a></li>
               <li><a href="/user/login/" title="Login">Войти</a></li>
               <li><a href="/user/logout/" title="Logout">Выйти</a></li>
@@ -34,5 +34,8 @@
                   {include file='activeUser.tpl'}
                   
               </div>
-                <div class="row">
-                {$infoMsg}
+          </div>
+
+          <div class="row">
+          {$infoMsg}
+          </div>

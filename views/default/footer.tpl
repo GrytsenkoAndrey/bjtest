@@ -1,8 +1,7 @@
-                         </div><!--/row-->
-            </div><!--/.col-xs-12.col-sm-9-->
 
 
-      </div><!--/row-->
+
+      </div><!--/offcanvas-->
 
       <hr>
 

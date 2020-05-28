@@ -29,7 +29,7 @@ class Front
         $fileName = isset($arrURI[0]) ? ucfirst(strip_tags(trim($arrURI[0]))) : '';
         if(file_exists($_SERVER['DOCUMENT_ROOT'] . '/controllers/' . $fileName . 'Controller.php')) {
             // выбор контроллера из адресной строки
-            $this->controller = !empty($arrURI[0]) ? $fileName . 'Controller' : 'IndexController';
+            $this->controller = !empty($arrURI[0]) ? $fileName . 'Controller' : 'TaskController';
         } else {
             $this->controller = '';
         }
